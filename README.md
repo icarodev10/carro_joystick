@@ -5,6 +5,12 @@ Este projeto é uma simulação de direção desenvolvida na Godot Engine 4 que 
 ## 🕹️ O Projeto
 Diferente de um jogo convencional controlado por teclado, este simulador utiliza um **Joystick Analógico** real para o controle do veículo e fornece feedback físico ao jogador através de componentes eletrônicos. É um exemplo prático de como integrar software de alto nível com eletrônica de baixo nível.
 
+## 📸 DEMO:
+
+
+https://github.com/user-attachments/assets/d4445f47-07a0-42d8-a12e-f743d295a3d0
+
+
 ## 💻 Desafios Técnicos e Aprendizados
 Como desenvolvedor focado em Backend e Automação, utilizei este projeto para explorar a comunicação entre três tecnologias distintas:
 
