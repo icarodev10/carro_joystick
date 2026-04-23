@@ -1,0 +1,207 @@
+[gd_scene format=3 uid="uid://vmhm2qcou1cf"]
+
+[ext_resource type="Script" uid="uid://duvlfo5yi45uu" path="res://node3d.gd" id="1_3wmsh"]
+[ext_resource type="Script" uid="uid://c74bn7ak0b6xn" path="res://vehicle_body_3d.gd" id="1_x31a8"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x31a8"]
+albedo_color = Color(1, 0.42352942, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_3wmsh"]
+material = SubResource("StandardMaterial3D_x31a8")
+size = Vector3(1, 0.7, 1.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_d41w2"]
+size = Vector3(1.0605527, 1.3457031, 3.162712)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_x31a8"]
+height = 0.135
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3wmsh"]
+albedo_color = Color(1, 1, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_d41w2"]
+material = SubResource("StandardMaterial3D_3wmsh")
+size = Vector3(0.2, 0.4, 0.2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tfggr"]
+albedo_color = Color(0.627451, 0.1254902, 0.9411765, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ckb0e"]
+material = SubResource("StandardMaterial3D_tfggr")
+size = Vector3(1, 0.5, 0.8)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oyp1f"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_nn6f8"]
+material = SubResource("StandardMaterial3D_oyp1f")
+size = Vector3(1.2, 0.1, 0.1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uq1ss"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_x31a8"]
+sky_top_color = Color(0.38431373, 0.45490196, 1, 1)
+sky_horizon_color = Color(0.94810647, 0.53673273, 0.0373949, 1)
+
+[sub_resource type="Sky" id="Sky_3wmsh"]
+sky_material = SubResource("ProceduralSkyMaterial_x31a8")
+
+[sub_resource type="Environment" id="Environment_d41w2"]
+background_mode = 2
+sky = SubResource("Sky_3wmsh")
+
+[node name="Node3D" type="Node3D" unique_id=1873018588]
+script = ExtResource("1_3wmsh")
+
+[node name="VehicleBody3D" type="VehicleBody3D" parent="." unique_id=155973803]
+mass = 100.0
+center_of_mass_mode = 1
+center_of_mass = Vector3(0, -1, 0)
+script = ExtResource("1_x31a8")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="VehicleBody3D" unique_id=1192693734]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0022814274, 0, -0.07324302)
+mesh = SubResource("BoxMesh_3wmsh")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="VehicleBody3D" unique_id=1219758016]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.03807716, 0.17285156, -0.005504608)
+shape = SubResource("BoxShape3D_d41w2")
+
+[node name="VehicleWheel3D" type="VehicleWheel3D" parent="VehicleBody3D" unique_id=2124980881]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 1)
+use_as_steering = true
+wheel_roll_influence = 0.0
+wheel_friction_slip = 6.0
+damping_compression = 4.5
+damping_relaxation = 5.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="VehicleBody3D/VehicleWheel3D" unique_id=645868780]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("CylinderMesh_x31a8")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="VehicleBody3D/VehicleWheel3D/MeshInstance3D" unique_id=1019465010]
+mesh = SubResource("BoxMesh_d41w2")
+
+[node name="VehicleWheel3D2" type="VehicleWheel3D" parent="VehicleBody3D" unique_id=1130097314]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 1)
+use_as_steering = true
+wheel_roll_influence = 0.0
+wheel_friction_slip = 6.0
+damping_compression = 4.5
+damping_relaxation = 5.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="VehicleBody3D/VehicleWheel3D2" unique_id=1631135273]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("CylinderMesh_x31a8")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="VehicleBody3D/VehicleWheel3D2/MeshInstance3D" unique_id=2015041772]
+mesh = SubResource("BoxMesh_d41w2")
+
+[node name="VehicleWheel3D3" type="VehicleWheel3D" parent="VehicleBody3D" unique_id=1838487188]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, -1)
+use_as_traction = true
+wheel_roll_influence = 0.0
+wheel_friction_slip = 8.0
+damping_compression = 4.5
+damping_relaxation = 5.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="VehicleBody3D/VehicleWheel3D3" unique_id=498246286]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("CylinderMesh_x31a8")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="VehicleBody3D/VehicleWheel3D3/MeshInstance3D" unique_id=1683229837]
+mesh = SubResource("BoxMesh_d41w2")
+
+[node name="VehicleWheel3D4" type="VehicleWheel3D" parent="VehicleBody3D" unique_id=142534162]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, -1)
+use_as_traction = true
+wheel_roll_influence = 0.0
+wheel_friction_slip = 8.0
+damping_compression = 4.5
+damping_relaxation = 5.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="VehicleBody3D/VehicleWheel3D4" unique_id=371459751]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("CylinderMesh_x31a8")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="VehicleBody3D/VehicleWheel3D4/MeshInstance3D" unique_id=744179356]
+mesh = SubResource("BoxMesh_d41w2")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="VehicleBody3D" unique_id=748038798]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.002672404, 0.58014107, -0.355583)
+mesh = SubResource("BoxMesh_ckb0e")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="VehicleBody3D" unique_id=2010534548]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0070555955, 0.5330918, -0.8294875)
+mesh = SubResource("BoxMesh_nn6f8")
+
+[node name="SpringArm3D" type="SpringArm3D" parent="VehicleBody3D" unique_id=1156916562]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 1.5, -2.1888576)
+spring_length = 5.0
+
+[node name="Camera3D" type="Camera3D" parent="VehicleBody3D/SpringArm3D" unique_id=2050745399]
+transform = Transform3D(1, 0, 0, 0, 0.9659258, 0.25881904, 0, -0.25881904, 0.9659258, 0, 0, 0)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1489395878]
+transform = Transform3D(-5, 0, 0, 0, -5, 0, 0, 0, -5, 6.0663543, -0.8912401, 0.31903976)
+use_collision = true
+size = Vector3(100, 0.001, 100)
+material = SubResource("StandardMaterial3D_uq1ss")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1115991468]
+transform = Transform3D(1, 0, 0, 0, 0.70710677, 0.70710677, 0, -0.70710677, 0.70710677, 0, 10, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1746370055]
+environment = SubResource("Environment_d41w2")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="." unique_id=1194894180]
+transform = Transform3D(1, 0, 0, 0, 0.9659258, 0.25881904, 0, -0.25881904, 0.9659258, 0, -0.32126108, 11.968704)
+use_collision = true
+size = Vector3(8, 0.5, 8)
+
+[node name="Timer" type="Timer" parent="." unique_id=1503706614]
+wait_time = 2.0
+autostart = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1330666490]
+
+[node name="Label" type="Label" parent="CanvasLayer" unique_id=2102650546]
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 40
+text = "Pontos: 0"
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=1577804382]
+process_mode = 3
+visible = false
+offset_right = 1150.0
+offset_bottom = 649.0
+color = Color(0.14509805, 0.14509805, 0.14509805, 0.70980394)
+
+[node name="Label" type="Label" parent="CanvasLayer/ColorRect" unique_id=1674035028]
+layout_mode = 0
+offset_left = 350.0
+offset_top = 254.0
+offset_right = 818.0
+offset_bottom = 336.0
+theme_override_font_sizes/font_size = 59
+text = "GAME OVER!!!!!!!!"
+
+[node name="Button" type="Button" parent="CanvasLayer/ColorRect" unique_id=1627326762]
+layout_mode = 0
+offset_left = 467.0
+offset_top = 334.0
+offset_right = 701.0
+offset_bottom = 393.0
+theme_override_font_sizes/font_size = 34
+text = "Recomeçar"
+
+[node name="TimerCaixote" type="Timer" parent="." unique_id=215393373]
+wait_time = 1.5
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="pressed" from="CanvasLayer/ColorRect/Button" to="." method="_on_button_pressed"]
+[connection signal="timeout" from="TimerCaixote" to="." method="_on_timer_caixote_timeout"]

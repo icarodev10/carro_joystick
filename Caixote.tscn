@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://lqnicvmxuadj"]
+
+[ext_resource type="Script" uid="uid://bq3nc3vfip8xw" path="res://caixote.gd" id="1_1rakh"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oxufh"]
+albedo_color = Color(0.50466526, 0.71446264, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_1rakh"]
+material = SubResource("StandardMaterial3D_oxufh")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hf8an"]
+
+[node name="Caixote" type="RigidBody3D" unique_id=410251980]
+mass = 80.0
+contact_monitor = true
+max_contacts_reported = 3
+script = ExtResource("1_1rakh")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=656603006]
+mesh = SubResource("BoxMesh_1rakh")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1139983985]
+shape = SubResource("BoxShape3D_hf8an")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

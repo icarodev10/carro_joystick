@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://dj2hxkqu5vpng"]
+
+[ext_resource type="Script" uid="uid://0mphjso8k0y6" path="res://area_3d.gd" id="1_wj1ks"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y2mvy"]
+albedo_color = Color(1, 0.84313726, 0, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_wj1ks"]
+material = SubResource("StandardMaterial3D_y2mvy")
+top_radius = 0.2
+bottom_radius = 0.2
+height = 0.062
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dkxyk"]
+albedo_color = Color(1, 1, 0, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_j2f1h"]
+material = SubResource("StandardMaterial3D_dkxyk")
+top_radius = 0.1
+bottom_radius = 0.1
+height = 0.05
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_34qrj"]
+radius = 0.236474
+
+[node name="Area3d" type="Area3D" unique_id=880063734]
+script = ExtResource("1_wj1ks")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=471871829]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("CylinderMesh_wj1ks")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D" unique_id=1105295062]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0012429226, 0.043454126, -0.00059339404)
+mesh = SubResource("CylinderMesh_j2f1h")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="MeshInstance3D" unique_id=2016015715]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0012429191, -0.03629303, -0.00059339404)
+mesh = SubResource("CylinderMesh_j2f1h")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=115972141]
+shape = SubResource("SphereShape3D_34qrj")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
